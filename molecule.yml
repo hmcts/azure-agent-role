@@ -1,0 +1,17 @@
+---
+dependency:
+  name: galaxy
+  requirements_file: requirements.yml
+driver:
+  name: docker
+docker:
+  containers:
+    - name: azure-agent-role-${BRANCH_NAME}-${BUILD_NUMBER}
+      image: centos/systemd
+      image_version: latest
+      disable_cache: true
+      dockerfile: Dockerfile
+      ansible_groups:
+        - group1
+verifier:
+  name: testinfra

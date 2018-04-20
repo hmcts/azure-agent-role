@@ -1,0 +1,12 @@
+---
+
+- name: "Install Azure Linux agent"
+  yum:
+    name: "WALinuxAgent"
+    state: "installed"
+
+- name: "Ensure agent is started"
+  service:
+    name: "waagent"
+    state: started
+    enabled: yes
